@@ -34,12 +34,16 @@ class Rack::Edit::Exceptions
   end
 
   def link_to line
-    "<a href='mvim://open?url=file://%s'>%s</a>" % [file(line), line]
-    "<a href='txmt://open?url=file://%s'>%s</a>" % [file(line), line]
+    "<a href='txmt://open?url=%s&line=%s'>%s</a>" % [url(line), line_no(line), line]
+    "<a href='mvim://open?url=%s&line=%s'>%s</a>" % [url(line), line_no(line), line]
   end
 
-  def file line
-    File.expand_path(line.split(":").shift)
+  def url line
+    "file://%s" % File.expand_path(line.split(":")[0])
+  end
+
+  def line_no line
+    line.split(":")[1]
   end
 
 end
