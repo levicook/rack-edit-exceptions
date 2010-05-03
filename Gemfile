@@ -11,6 +11,8 @@ group 'test' do
   gem 'diff-lcs'
   gem 'rack'
   gem 'rspec'
+  gem 'shotgun'
+  gem 'thin'
 
   if darwin?
     gem 'autotest-fsevent', :require => 'autotest/fsevent'

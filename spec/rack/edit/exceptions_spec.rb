@@ -11,13 +11,13 @@ describe Rack::Edit::Exceptions do
   specify { expect { res }.to_not raise_error }
 
   describe 'response to RuntimeError' do
-    subject { res }
+    subject              { res }
     its(:status)         { should == 500 }
-		its(:content_length) { should > 0 }
-		its(:content_type)   { should == 'text/html' }
+    its(:content_length) { should > 0 }
+    its(:content_type)   { should == 'text/html' }
 
     context :headers do
-      subject { res.headers }
+      subject      { res.headers }
       its(:length) { should == 2 }
       its(:keys)   { should include('Content-Length') }
       its(:keys)   { should include('Content-Type')   }
